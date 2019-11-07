@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
+
+class ProfileController extends Controller
+{
+    public function index()
+    {
+        $user = Auth::user();
+
+        return view("pages.profile", compact("user"));
+    }
+
+    public function store(Request $request)
+    {
+        $user = Auth::user();
+
+        $this->validate($request, [
+            "name" => "required",
+            "email" => [
+                "required",
+                "email",
+                Rule::unique("users")->ignore($user->id)
+            ],
+            "image" => "nullable|image"
+        ]);
+
+        $user->edit($request->all());
+        $user->generateStatusUser($request->get("status"));
+        $user->generatePassword($request->get("password"));
+        $user->uploadAvatar($request->file("image"));
+
+        return redirect()->back()->with("status", "Изменения успешно сохранены!");
+    }
+}
