@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthLoginRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,12 +16,6 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $this->validate($request, [
-            "name" => "required",
-            "email" => "required|email|unique:users",
-            "password" => "required"
-        ]);
-
         $user = User::add($request->all());
 
         $user->generatePassword($request->get("password"));
@@ -33,13 +28,8 @@ class AuthController extends Controller
         return view("pages.login");
     }
 
-    public function login(Request $request)
+    public function login(AuthLoginRequest $request)
     {
-        $this->validate($request, [
-            "email" => "required|email",
-            "password" => "required"
-        ]);
-
         if(Auth::attempt([
             "email" => $request->get("email"),
             "password" => $request->get("password")

@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminPostsStoreRequest;
+use App\Http\Requests\AdminPostsUpdateRequest;
 use App\Post;
 use App\Tag;
-use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
@@ -24,15 +25,8 @@ class PostsController extends Controller
         return view("admin.posts.create", compact("categories", "tags"));
     }
 
-    public function store(Request $request)
+    public function store(AdminPostsStoreRequest $request)
     {
-        $this->validate($request, [
-            "title" => "required",
-            "image" => "nullable|image",
-            "date" => "required",
-            "content" => "required"
-        ]);
-
         $post = Post::add($request->all());
         $post->uploadImage($request->file("image"));
         $post->setCategory($request->get("category_id"));
@@ -53,16 +47,10 @@ class PostsController extends Controller
         return view("admin.posts.edit", compact("post", "categories", "tags", "selectedTags"));
     }
 
-    public function update(Request $request, $id)
+    public function update(AdminPostsUpdateRequest $request, $id)
     {
-        $this->validate($request, [
-            "title" => "required",
-            "image" => "nullable|image",
-            "date" => "required",
-            "content" => "required"
-        ]);
-
         $post = Post::find($id);
+
         $post->edit($request->all());
         $post->uploadImage($request->file("image"));
         $post->setCategory($request->get("category_id"));

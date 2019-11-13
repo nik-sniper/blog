@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\AdminCategoriesStoreRequest;
+use App\Http\Requests\AdminCategoriesUpdateRequest;
+
 
 class CategoriesController extends Controller
 {
@@ -20,12 +22,8 @@ class CategoriesController extends Controller
         return view("admin.categories.create");
     }
 
-    public function store(Request $request)
+    public function store(AdminCategoriesStoreRequest $request)
     {
-        $this->validate($request,[
-            "title" => "required"
-        ]);
-
         Category::create($request->all());
         return redirect()->route("categories.index");
     }
@@ -36,12 +34,8 @@ class CategoriesController extends Controller
         return view("admin.categories.edit", ["category" => $category]);
     }
 
-    public function update(Request $request, $id)
+    public function update(AdminCategoriesUpdateRequest $request, $id)
     {
-        $this->validate($request,[
-            "title" => "required"
-        ]);
-
         $category = Category::find($id);
 
         $category->update($request->all());

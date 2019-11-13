@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminSubscriptionsStoreRequest;
 use App\Subscription;
 use Illuminate\Http\Request;
 
@@ -36,12 +37,8 @@ class SubscriptionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminSubscriptionsStoreRequest $request)
     {
-        $this->validate($request, [
-            "email" => "required|email|unique:subscriptions"
-        ]);
-
         Subscription::add($request->get("email"));
 
         return redirect()->route("subscriptions.index");

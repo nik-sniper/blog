@@ -2,19 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SubscriptionsSubscribeRequest;
 use App\Mail\SubscribeEmail;
 use App\Subscription;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class SubscriptionsController extends Controller
 {
-    public function subscribe(Request $request)
+    public function subscribe(SubscriptionsSubscribeRequest $request)
     {
-        $this->validate($request, [
-            "email" => "required|email|unique:subscriptions"
-        ]);
-
         $subs = Subscription::add($request->get("email"));
         $subs->generateToken();
 
