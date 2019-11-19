@@ -3,7 +3,7 @@
 
         <aside class="widget news-letter">
             <h3 class="widget-title text-uppercase text-center">Get Newsletter</h3>
-            @include("admin.errors")
+            @include("pages.error")
             <form method="post" action="/subscriptions">
                 {{csrf_field()}}
                 <input type="email" placeholder="Your email address" name="email">
