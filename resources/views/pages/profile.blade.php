@@ -9,7 +9,7 @@
 
                     <div class="leave-comment mr0"><!--leave comment-->
                         <h3 class="text-uppercase">My profile</h3>
-                        @include("admin.errors")
+                        @include("pages.error")
                         <br>
                         <img src="{{$user->getImage()}}" alt="" class="profile-image">
                         <form class="form-horizontal contact-form" role="form" method="post" action="/profile" enctype="multipart/form-data">
