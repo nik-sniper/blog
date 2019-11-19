@@ -24,7 +24,7 @@ require_once 'HTTP/Request2/Exception.php';
 /**
  * Class for building multipart/form-data request body
  *
- * The class helps to reduce memory consumption by streaming large file uploads
+ * The class helps to reduce memory consumption by streaming large file storage
  * from disk, it also allows monitoring of upload progress (see request #7630)
  *
  * @category HTTP
@@ -50,7 +50,7 @@ class HTTP_Request2_MultipartBody
     private $_params = array();
 
     /**
-     * File uploads added via {@link HTTP_Request2::addUpload()}
+     * File storage added via {@link HTTP_Request2::addUpload()}
      * @var  array
      */
     private $_uploads = array();
@@ -62,7 +62,7 @@ class HTTP_Request2_MultipartBody
     private $_headerParam = "--%s\r\nContent-Disposition: form-data; name=\"%s\"\r\n\r\n";
 
     /**
-     * Header for parts with uploads
+     * Header for parts with storage
      * @var  string
      */
     private $_headerUpload = "--%s\r\nContent-Disposition: form-data; name=\"%s\"; filename=\"%s\"\r\nContent-Type: %s\r\n\r\n";
@@ -83,7 +83,7 @@ class HTTP_Request2_MultipartBody
      *
      * @param array $params      values of form fields set via
      *                           {@link HTTP_Request2::addPostParameter()}
-     * @param array $uploads     file uploads set via
+     * @param array $uploads     file storage set via
      *                           {@link HTTP_Request2::addUpload()}
      * @param bool  $useBrackets whether to append brackets to array variable names
      */
@@ -223,8 +223,8 @@ class HTTP_Request2_MultipartBody
     /**
      * Returns the body as string
      *
-     * Note that it reads all file uploads into memory so it is a good idea not
-     * to use this method with large file uploads and rely on read() instead.
+     * Note that it reads all file storage into memory so it is a good idea not
+     * to use this method with large file storage and rely on read() instead.
      *
      * @return   string
      */

@@ -178,7 +178,7 @@ class HTTP_Request2 implements SplSubject
     protected $postParams = array();
 
     /**
-     * Array of file uploads (for multipart/form-data POST requests)
+     * Array of file storage (for multipart/form-data POST requests)
      * @var  array
      */
     protected $uploads = array();
@@ -930,7 +930,7 @@ class HTTP_Request2 implements SplSubject
         if (empty($this->adapter)) {
             $this->setAdapter($this->getConfig('adapter'));
         }
-        // magic_quotes_runtime may break file uploads and chunked response
+        // magic_quotes_runtime may break file storage and chunked response
         // processing; see bug #4543. Don't use ini_get() here; see bug #16440.
         if ($magicQuotes = get_magic_quotes_runtime()) {
             set_magic_quotes_runtime(false);

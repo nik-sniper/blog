@@ -22,7 +22,7 @@ use Guzzle\Http\EntityBody;
 
 /**
  * Easily create a multipart uploader used to quickly and reliably upload a
- * large file or data stream to Amazon S3 using multipart uploads
+ * large file or data stream to Amazon S3 using multipart storage
  */
 abstract class AbstractUploadBuilder
 {

@@ -100,7 +100,7 @@ class RequestFactory implements RequestFactoryInterface
             if ($body || $body === '0') {
                 // Add POST fields and files to an entity enclosing request if an array is used
                 if (is_array($body) || $body instanceof Collection) {
-                    // Normalize PHP style cURL uploads with a leading '@' symbol
+                    // Normalize PHP style cURL storage with a leading '@' symbol
                     foreach ($body as $key => $value) {
                         if (is_string($value) && substr($value, 0, 1) == '@') {
                             $request->addPostFile($key, $value);

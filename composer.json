@@ -13,6 +13,7 @@
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
+        "laravel/nova": "*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^6.0"
     },
@@ -23,6 +24,12 @@
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^8.0"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./nova"
+        }
+    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",

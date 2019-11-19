@@ -487,7 +487,7 @@ class S3Client extends AbstractClient
 
     /**
      * Upload a file, stream, or string to a bucket. If the upload size exceeds the specified threshold, the upload
-     * will be performed using parallel multipart uploads.
+     * will be performed using parallel multipart storage.
      *
      * @param string $bucket  Bucket to upload the object
      * @param string $key     Key of the object
@@ -498,7 +498,7 @@ class S3Client extends AbstractClient
      *     - params: Custom parameters to use with the upload. The parameters must map to a PutObject
      *       or InitiateMultipartUpload operation parameters.
      *     - min_part_size: Minimum size to allow for each uploaded part when performing a multipart upload.
-     *     - concurrency: Maximum number of concurrent multipart uploads.
+     *     - concurrency: Maximum number of concurrent multipart storage.
      *     - before_upload: Callback to invoke before each multipart upload. The callback will receive a
      *       Guzzle\Common\Event object with context.
      *
@@ -548,7 +548,7 @@ class S3Client extends AbstractClient
     }
 
     /**
-     * Recursively uploads all files in a given directory to a given bucket.
+     * Recursively storage all files in a given directory to a given bucket.
      *
      * @param string $directory Full path to a directory to upload
      * @param string $bucket    Name of the bucket
@@ -557,7 +557,7 @@ class S3Client extends AbstractClient
      *     - params: Array of parameters to use with each PutObject operation performed during the transfer
      *     - base_dir: Base directory to remove from each object key
      *     - force: Set to true to upload every file, even if the file is already in Amazon S3 and has not changed
-     *     - concurrency: Maximum number of parallel uploads (defaults to 10)
+     *     - concurrency: Maximum number of parallel storage (defaults to 10)
      *     - debug: Set to true or an fopen resource to enable debug mode to print information about each upload
      *     - multipart_upload_size: When the size of a file exceeds this value, the file will be uploaded using a
      *       multipart upload.

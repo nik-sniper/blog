@@ -58,7 +58,7 @@ abstract class AbstractSync extends AbstractHasDispatcher
      */
     public function transfer()
     {
-        // Pull out chunks of uploads to upload in parallel
+        // Pull out chunks of storage to upload in parallel
         $iterator = new ChunkedIterator($this->options['iterator'], $this->options['concurrency']);
         foreach ($iterator as $files) {
             $this->transferFiles($files);

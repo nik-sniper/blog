@@ -402,7 +402,7 @@ class HTTP_Request2_Adapter_Curl extends HTTP_Request2_Adapter
      *
      * The workaround consists of reading the entire request body into memory
      * and setting it as CURLOPT_POSTFIELDS, so it isn't recommended for large
-     * file uploads, use Socket adapter instead.
+     * file storage, use Socket adapter instead.
      *
      * @param resource $ch       cURL handle
      * @param array    &$headers Request headers

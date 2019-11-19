@@ -87,7 +87,7 @@ class User extends Authenticatable
 
         $this->removeAvatar();
         $filename = mt_rand(0, 100000).".".$image->extension();
-        $image->storeAs("uploads", $filename);
+        $image->storeAs("storage", $filename);
         $this->avatar = $filename;
         $this->save();
     }
@@ -95,7 +95,7 @@ class User extends Authenticatable
     public function removeAvatar()
     {
         if ($this->avatar != null) {
-            Storage::delete("uploads/".$this->avatar);
+            Storage::delete("storage/".$this->avatar);
         }
     }
 
@@ -104,7 +104,7 @@ class User extends Authenticatable
         if ($this->avatar === null) {
             return '/img/no-user-image.png';
         } else {
-            return "/uploads/".$this->avatar;
+            return "/storage/".$this->avatar;
         }
     }
 

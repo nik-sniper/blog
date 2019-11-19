@@ -27,7 +27,7 @@ class UploadedFile extends File
     /**
      * Whether the test mode is activated.
      *
-     * Local files are used in test mode hence the code should not enforce HTTP uploads.
+     * Local files are used in test mode hence the code should not enforce HTTP storage.
      *
      * @var bool
      */

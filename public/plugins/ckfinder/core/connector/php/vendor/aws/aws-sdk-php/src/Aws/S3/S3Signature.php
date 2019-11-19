@@ -51,7 +51,7 @@ class S3Signature implements S3SignatureInterface
         'tagging',
         'torrent',
         'uploadId',
-        'uploads',
+        'storage',
         'versionId',
         'versioning',
         'versions',

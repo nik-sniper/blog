@@ -11,7 +11,7 @@ use Guzzle\Http\Url;
 /**
  * Factory used to create fopen streams using PHP's http and https stream wrappers
  *
- * Note: PHP's http stream wrapper only supports streaming downloads. It does not support streaming uploads.
+ * Note: PHP's http stream wrapper only supports streaming downloads. It does not support streaming storage.
  */
 class PhpStreamRequestFactory implements StreamRequestFactoryInterface
 {

@@ -24,7 +24,7 @@ use Aws\Common\Iterator\AwsResourceIterator;
  *
  * This iterator includes the following additional options:
  *
- * - return_prefixes: Set to true to return both prefixes and uploads
+ * - return_prefixes: Set to true to return both prefixes and storage
  */
 class ListMultipartUploadsIterator extends AwsResourceIterator
 {
@@ -33,7 +33,7 @@ class ListMultipartUploadsIterator extends AwsResourceIterator
      */
     protected function handleResults(Model $result)
     {
-        // Get the list of uploads
+        // Get the list of storage
         $uploads = $result->get('Uploads') ?: array();
 
         // If there are prefixes and we want them, merge them in

@@ -468,7 +468,7 @@ return array (
         ),
         'CreateMultipartUpload' => array(
             'httpMethod' => 'POST',
-            'uri' => '/{Bucket}{/Key*}?uploads',
+            'uri' => '/{Bucket}{/Key*}?storage',
             'class' => 'Aws\\S3\\Command\\S3Command',
             'responseClass' => 'CreateMultipartUploadOutput',
             'responseType' => 'model',
@@ -1403,7 +1403,7 @@ return array (
         ),
         'ListMultipartUploads' => array(
             'httpMethod' => 'GET',
-            'uri' => '/{Bucket}?uploads',
+            'uri' => '/{Bucket}?storage',
             'class' => 'Aws\\S3\\Command\\S3Command',
             'responseClass' => 'ListMultipartUploadsOutput',
             'responseType' => 'model',
@@ -1432,7 +1432,7 @@ return array (
                 'MaxUploads' => array(
                     'type' => 'numeric',
                     'location' => 'query',
-                    'sentAs' => 'max-uploads',
+                    'sentAs' => 'max-storage',
                 ),
                 'Prefix' => array(
                     'type' => 'string',

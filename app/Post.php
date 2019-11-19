@@ -14,6 +14,10 @@ class Post extends Model
 
     protected $fillable = ["title", "content", "date", "description"];
 
+    protected $casts = [
+        'date' => 'date',
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -76,7 +80,7 @@ class Post extends Model
 
         $this->removeImage();
         $filename = mt_rand(0, 10000).".".$image->extension();
-        $image->storeAS("uploads", $filename);
+        $image->storeAS("storage", $filename);
         $this->image = $filename;
         $this->save();
     }
@@ -84,7 +88,7 @@ class Post extends Model
     public function removeImage()
     {
         if ($this->image != null) {
-            Storage::delete("uploads/".$this->image);
+            Storage::delete("storage/".$this->image);
         }
     }
 
@@ -93,7 +97,7 @@ class Post extends Model
         if ($this->image === null) {
             return "/img/no-image.png";
         } else {
-            return "/uploads/".$this->image;
+            return "/storage/".$this->image;
         }
     }
 
@@ -154,19 +158,19 @@ class Post extends Model
         }
     }
 
-    public function setDateAttribute($value)
+   /* public function setDatePostAttribute($value)
     {
         $date = Carbon::createFromFormat('d/m/y', $value)->format("Y-m-d");
 
-        $this->attributes["date"] = $date;
+        $this->attributes["date_post"] = $date;
     }
 
-    public function getDateAttribute($value)
+    public function getDatePostAttribute($value)
     {
         $date = Carbon::createFromFormat('Y-m-d', $value)->format("d/m/y");
 
         return $date;
-    }
+    }*/
 
     public function getCategoryTitle()
     {
@@ -193,7 +197,7 @@ class Post extends Model
 
     public function getDate()
     {
-        return Carbon::createFromFormat("d/m/y", $this->date)->format(" F m Y");
+        return Carbon::parse($this->date)->format(' F m Y');
     }
 
     public function hasPrevious()
