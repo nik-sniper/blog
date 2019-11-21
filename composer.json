@@ -12,6 +12,8 @@
         "cviebrock/eloquent-sluggable": "^6.0",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
+        "laravel-notification-channels/telegram": "^0.1.1",
+        "laravel-notification-channels/webpush": "^5.0",
         "laravel/framework": "^6.0",
         "laravel/nova": "*",
         "laravel/tinker": "^1.0",
