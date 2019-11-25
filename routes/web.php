@@ -19,6 +19,7 @@ Route::get('/tag/{slug}', "HomeController@tag")->name("tag.show");
 Route::get('/category/{slug}', "HomeController@category")->name("category.show");
 Route::post('/subscriptions', 'SubscriptionsController@subscribe');
 Route::get('/verify/{token}', 'SubscriptionsController@verify');
+Route::post('/push','PushController@store');
 
 Route::group(["middleware" => "auth"], function () {
     Route::get('/logout', 'AuthController@logout');
@@ -33,15 +34,3 @@ Route::group(["middleware" => "guest"], function () {
     Route::get('/login', 'AuthController@loginForm')->name("login");
     Route::post('/login', 'AuthController@login');
 });
-
-/*Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "admin"], function () {
-    Route::get("/", "DashboardController@index");
-    Route::resource("/categories", "CategoriesController");
-    Route::resource("/tags", "TagsController");
-    Route::resource("/users", "UsersController");
-    Route::resource("/posts", "PostsController");
-    Route::get("/comments", "CommentsController@index");
-    Route::get("/comments/toggle/{id}", "CommentsController@toggle");
-    Route::delete("/comments/{id}/destroy", "CommentsController@destroy")->name("comments.destroy");
-    Route::resource('/subscriptions', 'SubscriptionsController');
-});*/

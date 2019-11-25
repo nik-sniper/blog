@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- favicon icon -->
 
@@ -250,5 +251,8 @@
 </footer>
 <!-- js files -->
 <script type="text/javascript" src="/js/front.js"></script>
+@auth
+    <script src="{{ asset('js/enable-push.js') }}" defer></script>
+@endauth
 </body>
 </html>

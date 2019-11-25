@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         //NotificationChannels\WebPush\WebPushServiceProvider::class,
+        NotificationChannels\Telegram\TelegramServiceProvider::class,
         /*
          * Package Service Providers...
          */

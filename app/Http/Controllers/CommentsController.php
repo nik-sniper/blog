@@ -6,11 +6,9 @@ use App\Comment;
 use App\Http\Requests\CommentsStoreRequest;
 use App\Notifications\MessageTelegram;
 use App\Notifications\PushDemo;
-use App\Notifications\NewMessage;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
-
 
 
 class CommentsController extends Controller
@@ -22,10 +20,6 @@ class CommentsController extends Controller
         $comment->post_id = $request->get("post_id");
         $comment->user_id = Auth::user()->id;
         $comment->save();
-
-        $user = Auth::user();
-        $user->updatePushSubscription("endpoint", "content");
-
 
         Notification::send(User::all(), new PushDemo);
 

@@ -36,13 +36,11 @@ class MessageTelegram extends Notification
 
     public function toTelegram($notifiable)
     {
-        $url = url('/');
-
         return TelegramMessage::create()
             // Optional recipient user id.
             //->to(517230141)
             // Markdown supported.
-            ->content("Hello there!\nYour invoice has been *PAID*");
+            ->content("ку никитос");
             // (Optional) Inline Buttons
             /*->button('View Invoice', $url)
             ->button('Download Invoice', $url);*/
