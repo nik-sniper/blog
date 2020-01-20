@@ -31,7 +31,7 @@ $factory->define(\App\Post::class, function (Faker $faker) {
         'title' => $faker->sentence,
         'content' => $faker->sentence,
         'image' => 'photo1.png',
-        'date' => '08/7/17',
+        'date' => \Carbon\Carbon::now(),
         'views' => $faker->numberBetween(0, 5000),
         'category_id' => 1,
         'user_id' => 1,
